@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Terms Modal</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Button */
+.open-btn {
+  padding: 10px 20px;
+  background: #0A1F44;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  margin: 5% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 700px;
+  border-radius: 10px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+/* Close Button */
+.close {
+  float: right;
+  font-size: 25px;
+  cursor: pointer;
+  color: red;
+}
+
+/* Headings */
+h2 {
+  color: #0A1F44;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Open Button -->
+<button class="open-btn" onclick="openModal()">View Terms of Service</button>
+
+<!-- Modal -->
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <h2>📄 Terms of Service</h2>
+    <p><strong>New Athugalpura Agencies</strong></p>
+
+    <hr>
+
+    <h3>1. Acceptance of Terms</h3>
+    <p>By using our website and services, you agree to comply with these Terms of Service.</p>
+
+    <h3>2. Services</h3>
+    <p>We provide job placement, visa assistance, and related services for overseas employment. We do not guarantee job placement or visa approval.</p>
+
+    <h3>3. User Responsibilities</h3>
+    <p>You agree to provide accurate and complete information when submitting applications. Providing false information may result in rejection.</p>
+
+    <h3>4. Data Usage</h3>
+    <p>Your personal data will be handled according to our Privacy Policy and may be shared with employers or authorities when necessary.</p>
+
+    <h3>5. Limitation of Liability</h3>
+    <p>We are not responsible for any losses, delays, or issues caused by third parties such as employers, embassies, or visa authorities.</p>
+
+    <h3>6. Changes to Services</h3>
+    <p>We may update or modify our services or these terms at any time without prior notice.</p>
+
+    <h3>7. Contact</h3>
+    <p>Email: your@email.com<br>Phone: +94XXXXXXXXX</p>
+
+    <hr>
+    <p>✅ By using our website, you agree to these Terms of Service.</p>
+
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById("termsModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("termsModal").style.display = "none";
+}
+
+// Close when clicking outside
+window.onclick = function(event) {
+  let modal = document.getElementById("termsModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
