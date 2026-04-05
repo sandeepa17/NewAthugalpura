@@ -3,19 +3,15 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Home | New Athugalpura Agencies</title>
-<link rel="stylesheet" href="src/bootstrap.css">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="src/LOGO.png">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Inter:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
                         "secondary-container": "#fed65b",
                         "surface-container-highest": "#e7e2d8",
                         "on-tertiary-fixed-variant": "#0034bf",
@@ -63,41 +59,45 @@
                         "inverse-primary": "#ffb4a8",
                         "outline": "#926f69",
                         "surface-container-lowest": "#ffffff"
-                    },
-                    fontFamily: {
-                        "headline": ["Manrope"],
-                        "body": ["Be Vietnam Pro"],
-                        "label": ["Inter"]
-                    },
-                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-                },
             },
-        }
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+            }
+          },
+        },
+      }
     </script>
 <style>
         .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            line-height: 1;
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(148,0,0,0.9) 0%, rgba(193,0,0,0.7) 100%);
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, span { font-family: 'Manrope', sans-serif; }
+        
+        .carousel-slide {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s;
+            position: absolute;
+            inset: 0;
         }
-        .glass-nav {
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-        body {
-            font-family: 'Be Vietnam Pro', sans-serif;
-            background-color: #FFF9EF;
-            color: #1D1B16;
-        }
-        h1, h2, h3, h4 {
-            font-family: 'Manrope', sans-serif;
+        .carousel-slide.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
         }
     </style>
 </head>
-<body class="bg-surface text-on-surface">
+<body class="bg-background text-on-surface">
+<!-- TopAppBar from JSON -->
 <!-- TopNavBar (Desktop) -->
 <header class="fixed top-0 left-0 right-0 z-40 bg-[#FFF9EF] dark:bg-stone-900/80 backdrop-blur-md shadow-[0_20px_40px_rgba(29,27,22,0.06)] hidden md:block">
 <div class="max-w-7xl mx-auto flex justify-between items-center w-full px-8 py-4">
@@ -173,42 +173,105 @@
 </div>
 </aside>
 </div>
-<main class="pt-16 md:pt-0">
-<!-- Hero Slider Section -->
-<section class="relative h-[600px] md:h-[870px] overflow-hidden flex items-center">
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover" data-alt="Cinematic wide shot of a modern international airport terminal with golden sunset light streaming through glass windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-pw7BdDIMIZTjnrYAUhk4cW_Na9dtFN6vSFGgGe2agxFkz0De0EragFRmWTYRjESkeNGWN0uKfsoWFO9GG_ZoiG4Ccbh380ANVRGXjQIqRLfg0wPzoReqmBqgph5JZb8FCQmWa7wjKCkk7s49ANn-ldJgjGXE-l6Z5w95Gb14TtNRhd2h41GXqaZ93N8BL3-ONZnUqGBKn_wiv1AQaciTBli06VejfoBljYdCtRvj78KHbN958kG9KRPYhWZHTzxKWwLsOzkuwSM"/>
-<div class="absolute inset-0 hero-gradient opacity-60"></div>
-<div class="absolute inset-0 bg-gradient-to-t from-[#1D1B16] via-transparent to-transparent opacity-80"></div>
+
+
+
+<main>
+<!-- Hero Carousel Section -->
+<section class="relative w-full overflow-hidden bg-surface-container-low min-h-[800px] flex items-center">
+<!-- Carousel Wrapper -->
+<div class="relative w-full" id="hero-carousel">
+<!-- Slide 1 -->
+<div class="carousel-slide active" data-index="0">
+<div class="container mx-auto px-8 py-20 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-5 z-10 space-y-8">
+<div class="space-y-4">
+<span class="text-primary font-body font-bold tracking-[0.2em] text-xs uppercase">Summer Collection 2024</span>
+<h1 class="text-6xl md:text-8xl leading-[1] text-on-surface italic">A Breath of <br/>Warm Air.</h1>
+<p class="text-secondary text-lg leading-relaxed max-w-md font-body">Discover our curated selection of sun-baked linens and artisanal accessories, designed for the quiet moments of the golden hour.</p>
 </div>
-<div class="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full">
-<div class="max-w-2xl space-y-6">
-<span class="inline-block px-4 py-1.5 bg-secondary-fixed text-on-secondary-fixed text-[0.75rem] font-bold font-label uppercase tracking-widest rounded-full">Premier Recruitment Agency</span>
-<h1 class="text-white text-4xl md:text-5xl lg:text-7xl font-headline font-bold leading-[1.1] tracking-tight">
-                        Your Gateway to <br/><span class="text-secondary-container">Global Success</span>
-</h1>
-<p class="text-white/90 text-base md:text-xl font-body max-w-lg leading-relaxed">
-                        Connecting Sri Lankan talent with prestigious career opportunities across Europe, the Middle East, and beyond. Professional excellence, personified.
-                    </p>
-<div class="flex flex-col sm:flex-row gap-4 pt-4">
-<button class="bg-white text-primary font-headline font-bold px-8 py-4 rounded-lg flex items-center justify-center gap-2 transition-all hover:bg-secondary-container hover:text-on-secondary-container">
-                            Explore Destinations <span class="material-symbols-outlined">arrow_forward</span>
+<div class="flex items-center space-x-6">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-body font-bold text-sm tracking-wide shadow-lg hover:opacity-90 active:scale-95 transition-all">EXPLORE NOW</button>
+<button class="border border-outline-variant text-on-surface px-10 py-4 rounded-lg font-body font-bold text-sm tracking-wide hover:bg-surface-variant transition-all">VIEW GALLERY</button>
+</div>
+</div>
+<div class="md:col-span-7 relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Lifestyle" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaA-rmiaUDS1t3cLLd57vGX3rYSuAe-7NLQ2dDOQr9cgo3v5LTOHD4V0qXkCJPwS1ifDGZHwoNeyz8B3QOMishk6Cs2J20tHgBDw9ng-DrNuglzAE0nShMJjmScC5tU5OSH-ZjP4umAUWCiAYR-UZGnExEoQW4REF-ILJ5D6A7JczMf8hi6Lw3BQYt_PCg-ZyWdPmwcVHXHcltZDfRCAgvduRvISdvxGS-bHqDaAHXlqu7vCPRTQ1rhbl9KxzrDkaLrvDyUkmZtA7J"/>
+<div class="absolute bottom-8 right-8 bg-background/80 backdrop-blur-md p-6 rounded-xl border border-outline-variant/30 max-w-xs hidden lg:block">
+<p class="text-xs font-bold text-primary mb-2 uppercase tracking-tighter">Artisan Spotlight</p>
+<p class="text-sm font-body text-on-surface">"Every piece tells a story of the desert's quiet resilience and timeless beauty."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="carousel-slide" data-index="1">
+<div class="container mx-auto px-8 py-20 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-5 z-10 space-y-8">
+<div class="space-y-4">
+<span class="text-primary font-body font-bold tracking-[0.2em] text-xs uppercase">Summer Collection 2024</span>
+<h1 class="text-6xl md:text-8xl leading-[1] text-on-surface italic">Echoes of <br/>the Dunes.</h1>
+<p class="text-secondary text-lg leading-relaxed max-w-md font-body">Inspired by the shifting sands, our new ceramic range brings the raw textures of the Sahara directly into your living space.</p>
+</div>
+<div class="flex items-center space-x-6">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-body font-bold text-sm tracking-wide shadow-lg hover:opacity-90 active:scale-95 transition-all">SHOP CERAMICS</button>
+<button class="border border-outline-variant text-on-surface px-10 py-4 rounded-lg font-body font-bold text-sm tracking-wide hover:bg-surface-variant transition-all">THE STORY</button>
+</div>
+</div>
+<div class="md:col-span-7 relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Dunes" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXQVseJyelVvyQ0OSsJ_4vsXs0teV0BEWyd3yxdMyJawEfHsiJurnhg2KpB9WKZpCltVMtjXn4HSpuVR6xMTBrQfovX9vAR8vGKU_-eI1_TAj0s3FV4N2bKfKL3oYMPaFWGgFgMwZS_2iulPmvh2GleSM7yxPcFjpZPVRWpmumzZM1F6XBDhCqHkPCwMZ5TQvyI_d1fmOF9Fgq19CFG5nqL-Su1UFLZhWL3Fv5sIQmPsoUTVI4ug9yRCOg0g8dmb8Gyk8-DFGj0fA2"/>
+<div class="absolute bottom-8 right-8 bg-background/80 backdrop-blur-md p-6 rounded-xl border border-outline-variant/30 max-w-xs hidden lg:block">
+<p class="text-xs font-bold text-primary mb-2 uppercase tracking-tighter">Texture Study</p>
+<p class="text-sm font-body text-on-surface">"The tactile nature of unglazed clay reminds us of the earth beneath our feet."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="carousel-slide" data-index="2">
+<div class="container mx-auto px-8 py-20 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-5 z-10 space-y-8">
+<div class="space-y-4">
+<span class="text-primary font-body font-bold tracking-[0.2em] text-xs uppercase">Summer Collection 2024</span>
+<h1 class="text-6xl md:text-8xl leading-[1] text-on-surface italic">Woven by <br/>the Sun.</h1>
+<p class="text-secondary text-lg leading-relaxed max-w-md font-body">Lightweight textiles woven from sustainable fibers, capturing the essence of Mediterranean ease and desert warmth.</p>
+</div>
+<div class="flex items-center space-x-6">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-lg font-body font-bold text-sm tracking-wide shadow-lg hover:opacity-90 active:scale-95 transition-all">SHOP TEXTILES</button>
+<button class="border border-outline-variant text-on-surface px-10 py-4 rounded-lg font-body font-bold text-sm tracking-wide hover:bg-surface-variant transition-all">LOOKBOOK</button>
+</div>
+</div>
+<div class="md:col-span-7 relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Textiles" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnSzhbguABP0R61VkWcouNsdFm8r38iHdbGfFZRcai9sxKyUaL593ONIlxS-E-J4g6k51WQwJmqBhU2UAySbXeidOOH7rSUTdBg925i5cQ7cZEysoBlMSucBTjM2_jgZUlZgEpKQcMu8Ywa-Kf_JG7bIP1nLsDnr16kUKL4kkE71An5R9LxMwkI4QIKsSVpRRl4BdS4LwmYHJYkwxHj0sk6lF8RpSX2Tg_hP-FepEvkglFUFJ4zo3H2xZk0JHn6jcYWCovOB9oI2rd"/>
+<div class="absolute bottom-8 right-8 bg-background/80 backdrop-blur-md p-6 rounded-xl border border-outline-variant/30 max-w-xs hidden lg:block">
+<p class="text-xs font-bold text-primary mb-2 uppercase tracking-tighter">Material Focus</p>
+<p class="text-sm font-body text-on-surface">"Linen that breathes with you, softening with every sun-drenched afternoon."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Carousel Navigation Arrows -->
+<div class="absolute top-1/2 left-8 -translate-y-1/2 z-20 hidden md:block">
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant text-primary bg-background/50 backdrop-blur-sm hover:bg-white transition-all shadow-sm" id="prev-slide">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
 </button>
-<button class="border border-white/30 backdrop-blur-md text-white font-headline font-bold px-8 py-4 rounded-lg hover:bg-white/10">
-                            Our Story
-                        </button>
 </div>
+<div class="absolute top-1/2 right-8 -translate-y-1/2 z-20 hidden md:block">
+<button class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant text-primary bg-background/50 backdrop-blur-sm hover:bg-white transition-all shadow-sm" id="next-slide">
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
 </div>
+<!-- Pagination Dots -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
+<button class="dot-btn w-2.5 h-2.5 rounded-full bg-primary" data-index="0"></button>
+<button class="dot-btn w-2.5 h-2.5 rounded-full bg-outline-variant hover:bg-primary/50 transition-colors" data-index="1"></button>
+<button class="dot-btn w-2.5 h-2.5 rounded-full bg-outline-variant hover:bg-primary/50 transition-colors" data-index="2"></button>
 </div>
-<!-- Pagination Indicators -->
-<div class="absolute bottom-10 right-6 md:right-8 flex gap-3">
-<div class="w-8 md:w-12 h-1 bg-secondary-container rounded-full"></div>
-<div class="w-8 md:w-12 h-1 bg-white/30 rounded-full"></div>
-<div class="w-8 md:w-12 h-1 bg-white/30 rounded-full"></div>
 </div>
 </section>
+
 <!-- Stats Section (Intro) -->
-<section class="bg-surface-container-low py-16 md:py-24">
+<section class="bg-surface-container-low py-16 md:py-24" id="stats-section">
 <div class="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
 <div class="md:col-span-5 space-y-6">
 <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface">Experience that <span class="text-primary">Inspires Trust</span></h2>
@@ -216,40 +279,29 @@
                         Since our inception, New Athugalpura Agencies has been at the forefront of foreign recruitment in Sri Lanka. We don't just find jobs; we build futures by matching individual aspirations with global demands.
                     </p>
 <div class="pt-4">
-<a class="text-primary font-headline font-bold flex items-center gap-2 hover:gap-4 transition-all" href="New Athugalpura Profile original.pdf">
+<a class="text-primary font-headline font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">
                             Learn more about our legacy <span class="material-symbols-outlined">trending_flat</span>
 </a>
 </div>
 </div>
-
-
 <div class="md:col-span-7 grid grid-cols-2 gap-4 md:gap-8">
-<div class="bg-surface-container-low p-10 rounded-xl relative overflow-hidden group hover:bg-surface-container-high transition-colors">
-<div class="text-5xl font-headline font-extrabold text-primary mb-2">
-<p class="text-3xl md:text-5xl font-headline font-bold text-primary" data-suffix="+" data-target="20" id="stat-years">0+</p>
+<div class="bg-surface-container-highest p-6 md:p-10 rounded-2xl space-y-2 border-b-4 border-secondary">
+<p class="text-3xl md:text-5xl font-headline font-bold text-primary"><span class="counter" data-target="20">0</span>+</p>
 <p class="text-on-surface font-label font-medium uppercase tracking-wider text-[10px] md:text-xs">Years of Excellence</p>
 </div>
-</div>
-<div style="background-color: rgba(138, 129, 0, 0.055);" class="bg-surface-container-low p-10 rounded-xl relative overflow-hidden group hover:bg-surface-container-high transition-colors">
-<div class="text-5xl font-headline font-extrabold text-primary mb-2">
-<p style="color: rgb(107, 87, 0);" class="text-3xl md:text-5xl font-headline font-bold text-primary" data-suffix="k+" data-target="15" id="stat-placements">0k+</p>
+<div class="bg-surface-container-highest p-6 md:p-10 rounded-2xl space-y-2 border-b-4 border-secondary">
+<p class="text-3xl md:text-5xl font-headline font-bold text-primary"><span class="counter" data-target="15">0</span>K+</p>
 <p class="text-on-surface font-label font-medium uppercase tracking-wider text-[10px] md:text-xs">Placements</p>
 </div>
-</div>
-<div class="bg-surface-container-low p-10 rounded-xl relative overflow-hidden group hover:bg-surface-container-high transition-colors">
-<div class="text-5xl font-headline font-extrabold text-primary mb-2">
-<p class="text-3xl md:text-5xl font-headline font-bold text-primary" data-suffix="" data-target="12" id="stat-countries">0</p>
+<div class="bg-surface-container-highest p-6 md:p-10 rounded-2xl space-y-2 border-b-4 border-secondary">
+<p class="text-3xl md:text-5xl font-headline font-bold text-primary"><span class="counter" data-target="12">0</span></p>
 <p class="text-on-surface font-label font-medium uppercase tracking-wider text-[10px] md:text-xs">Partner Countries</p>
 </div>
-</div>
-<div style="background-color: rgba(138, 129, 0, 0.055);" class="bg-surface-container-low p-10 rounded-xl relative overflow-hidden group hover:bg-surface-container-high transition-colors">
-<div class="text-5xl font-headline font-extrabold text-primary mb-2">
-<p style="color: rgb(107, 87, 0);" class="text-3xl md:text-5xl font-headline font-bold text-primary" data-suffix="%" data-target="100" id="stat-compliance">0%</p>
+<div class="bg-surface-container-highest p-6 md:p-10 rounded-2xl space-y-2 border-b-4 border-secondary">
+<p class="text-3xl md:text-5xl font-headline font-bold text-primary"><span class="counter" data-target="100">0</span>%</p>
 <p class="text-on-surface font-label font-medium uppercase tracking-wider text-[10px] md:text-xs">Legal Compliance</p>
 </div>
 </div>
-</div>
-
 </div>
 </section>
 
@@ -435,9 +487,9 @@
 <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"></div>
 </div>
 </section>
+
+
 </main>
-<!-- Footer -->
-<!-- Footer -->
 <footer class="bg-[#F9F3E9] dark:bg-[#1D1B16] w-full">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 py-20 max-w-7xl mx-auto">
 <div class="col-span-1 md:col-span-1">
@@ -587,58 +639,125 @@
   </div>
 </div>
 </footer>
-
-<script src="src/bootstrap.bundle.min.js"></script>
-
-</body>
-</html>
-<style>
-        /* Custom scrollbar hiding */
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
 <script>
-    function animateValue(obj, start, end, duration, suffix) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = Math.floor(progress * (end - start) + start) + suffix;
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
+    function animateCounters() {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 10000; // The lower the slower
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const count = parseInt(counter.innerText);
+
+                // Lower inc means smoother and slower animation
+                const inc = target / speed;
+
+                if (count < target) {
+                    // Add inc to count and output in counter
+                    counter.innerText = Math.ceil(count + inc);
+                    // Call function every ms
+                    setTimeout(updateCount, 15);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
     }
 
-    const statsObserver = new IntersectionObserver((entries, observer) => {
+    // Intersection Observer to trigger when section is in view
+    const statsSection = document.getElementById('stats-section');
+    const observerOptions = {
+        root: null,
+        threshold: 0.1 // 10% of the section is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const stats = [
-                    document.getElementById('stat-years'),
-                    document.getElementById('stat-placements'),
-                    document.getElementById('stat-countries'),
-                    document.getElementById('stat-compliance')
-                ];
-
-                stats.forEach(stat => {
-                    const target = parseInt(stat.getAttribute('data-target'));
-                    const suffix = stat.getAttribute('data-suffix');
-                    animateValue(stat, 0, target, 2000, suffix);
-                });
-
-                observer.unobserve(entry.target);
+                animateCounters();
+                observer.unobserve(entry.target); // Only animate once
             }
         });
-    }, { threshold: 0.5 });
+    }, observerOptions);
 
-    const statsSection = document.querySelector('section.bg-surface-container-low');
     if (statsSection) {
-        statsObserver.observe(statsSection);
+        observer.observe(statsSection);
     }
-</script></body></html>
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot-btn');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+        let currentIndex = 0;
+        let slideInterval;
+
+        function updateCarousel(newIndex) {
+            // Handle wrap around
+            if (newIndex < 0) newIndex = slides.length - 1;
+            if (newIndex >= slides.length) newIndex = 0;
+
+            // Update slides
+            slides.forEach((slide, idx) => {
+                if (idx === newIndex) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update dots
+            dots.forEach((dot, idx) => {
+                if (idx === newIndex) {
+                    dot.classList.add('bg-primary');
+                    dot.classList.remove('bg-outline-variant');
+                } else {
+                    dot.classList.remove('bg-primary');
+                    dot.classList.add('bg-outline-variant');
+                }
+            });
+
+            currentIndex = newIndex;
+        }
+
+        function startAutoSlide() {
+            stopAutoSlide();
+            slideInterval = setInterval(() => {
+                updateCarousel(currentIndex + 1);
+            }, 6000); // 6 seconds per slide
+        }
+
+        function stopAutoSlide() {
+            clearInterval(slideInterval);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            updateCarousel(currentIndex - 1);
+            startAutoSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            updateCarousel(currentIndex + 1);
+            startAutoSlide();
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.getAttribute('data-index'));
+                updateCarousel(index);
+                startAutoSlide();
+            });
+        });
+
+        // Initialize
+        startAutoSlide();
+    });
+
+
+    
+</script>
+
+<script src="src/bootstrap.bundle.min.js"></script>
+</body></html>
